@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Str;
 
 trait Uuids
 {
@@ -16,7 +16,7 @@ trait Uuids
 
         static::creating(function ($model) {
             if (empty($model->{$model->getKeyName()})) {
-                $model->{$model->getKeyName()} = Uuid::uuid4()->toString();
+                $model->{$model->getKeyName()} = Str::uuid()->toString();
             }
         });
     }
